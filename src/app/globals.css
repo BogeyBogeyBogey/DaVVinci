@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #1B1B1B;
+  color: #FAF3E0;
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #95D5B2, #2D6A4F);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #1B1B1B; }
+::-webkit-scrollbar-thumb { background: #2D6A4F; border-radius: 3px; }
+
+/* Pulse animation for loading */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(45, 106, 79, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(45, 106, 79, 0.6); }
+}
+.pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
