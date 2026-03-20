@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'VV Episode Creator — Vrolijke Vrekken',
-  description: 'Van nieuwsartikel tot volledig uitgeschreven podcastscript',
+  title: 'VV Episode Machine — Vrolijke Vrekken',
+  description: 'Van nieuws tot podcast + social content in één klik',
 }
 
 export default function RootLayout({

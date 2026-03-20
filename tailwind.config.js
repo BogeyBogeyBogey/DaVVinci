@@ -7,12 +7,20 @@ module.exports = {
     extend: {
       colors: {
         vv: {
+          navy: '#1B3A5C',
+          'navy-deep': '#0F2440',
+          'navy-light': '#2A5080',
+          yellow: '#FFD600',
+          'yellow-soft': '#FFE55C',
+          pink: '#FFB6C1',
+          kraft: '#C4A76C',
+          'kraft-light': '#DCC99B',
+          cream: '#FAF3E0',
+          white: '#FFFFFF',
           green: '#2D6A4F',
           lime: '#95D5B2',
-          gold: '#F4A261',
-          dark: '#1B1B1B',
-          cream: '#FAF3E0',
           coral: '#E76F51',
+          gold: '#F4A261',
         }
       },
       fontFamily: {
