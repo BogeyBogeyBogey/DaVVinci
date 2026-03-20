@@ -1,39 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background: #0F2440;
-  color: #FAF3E0;
+:root {
+  --navy: #1B3A5C;
+  --navy-deep: #0F2440;
+  --yellow: #FFD600;
+  --yellow-glow: rgba(255, 214, 0, 0.15);
+  --pink: #F8A4B8;
 }
 
-/* VV brand gradient */
+html { scroll-behavior: smooth; }
+
+body {
+  background: #0A1628;
+  color: #FAF3E0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== GRADIENTS ===== */
 @layer utilities {
   .text-gradient {
     background: linear-gradient(135deg, #FFD600, #F4A261);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .bg-kraft {
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  .bg-glass {
+    background: rgba(15, 36, 64, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .bg-glass-light {
+    background: rgba(27, 58, 92, 0.4);
+    backdrop-filter: blur(12px);
   }
 }
 
-/* Custom scrollbar */
+/* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0F2440; }
+::-webkit-scrollbar-track { background: #0A1628; }
 ::-webkit-scrollbar-thumb { background: #1B3A5C; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #2A5080; }
 
-/* Machine animations */
+/* ===== HERO GLOW ===== */
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(255, 214, 0, 0.2); }
-  50% { box-shadow: 0 0 40px rgba(255, 214, 0, 0.5); }
+  0%, 100% { box-shadow: 0 0 30px rgba(255, 214, 0, 0.2), 0 0 60px rgba(255, 214, 0, 0.1); }
+  50% { box-shadow: 0 0 50px rgba(255, 214, 0, 0.4), 0 0 100px rgba(255, 214, 0, 0.15); }
 }
-.pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+.pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
 
+/* ===== MACHINE PIPELINE ===== */
 @keyframes machine-pipe {
   0% { background-position: 0% 0%; }
   100% { background-position: 200% 0%; }
@@ -44,27 +62,124 @@ body {
   animation: machine-pipe 1s linear infinite;
 }
 
-@keyframes conveyor {
-  0% { transform: translateX(-100%); opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { transform: translateX(100%); opacity: 0; }
-}
-
+/* ===== GEAR SPIN ===== */
 @keyframes gear-spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
 .animate-gear { animation: gear-spin 3s linear infinite; }
 
-@keyframes stamp {
-  0%, 80% { transform: scale(1); }
-  90% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+/* ===== FLOAT ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+.animate-float { animation: float 4s ease-in-out infinite; }
+
+/* ===== PROGRESS BAR ===== */
+@keyframes progress-indeterminate {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+.animate-progress {
+  animation: progress-indeterminate 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-/* Clip moment marker */
+/* ===== REVEAL ANIMATION ===== */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal-up { animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+@keyframes reveal-scale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.reveal-scale { animation: reveal-scale 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* ===== CLIP MARKER ===== */
 .clip-marker {
-  background: linear-gradient(90deg, rgba(231, 111, 81, 0.2), rgba(231, 111, 81, 0.1));
+  background: linear-gradient(90deg, rgba(231, 111, 81, 0.15), transparent);
   border-left: 3px solid #E76F51;
 }
+
+/* ===== AMBIENT ORB ===== */
+@keyframes orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -20px) scale(1.05); }
+  50% { transform: translate(-10px, 20px) scale(0.95); }
+  75% { transform: translate(-30px, -10px) scale(1.02); }
+}
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: orb-float 12s ease-in-out infinite;
+  pointer-events: none;
+}
+.orb-yellow {
+  background: radial-gradient(circle, rgba(255, 214, 0, 0.3), transparent 70%);
+  width: 400px; height: 400px;
+}
+.orb-pink {
+  background: radial-gradient(circle, rgba(248, 164, 184, 0.2), transparent 70%);
+  width: 300px; height: 300px;
+  animation-delay: -4s;
+}
+.orb-blue {
+  background: radial-gradient(circle, rgba(42, 80, 128, 0.4), transparent 70%);
+  width: 500px; height: 500px;
+  animation-delay: -8s;
+}
+
+/* ===== NEWS CARD HOVER ===== */
+.news-card {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.news-card:hover {
+  transform: translateY(-2px) scale(1.005);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== SCORE RING ===== */
+.score-ring {
+  background: conic-gradient(
+    #FFD600 calc(var(--score) * 1%),
+    rgba(255, 255, 255, 0.08) 0
+  );
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.score-ring-inner {
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== SOCIAL TABS ===== */
+.tab-active {
+  background: linear-gradient(135deg, rgba(255, 214, 0, 0.15), rgba(255, 214, 0, 0.05));
+  border-color: rgba(255, 214, 0, 0.4);
+  color: #FFD600;
+}
+
+/* ===== TYPING DOTS ===== */
+@keyframes typing {
+  0%, 60%, 100% { opacity: 0.2; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-4px); }
+}
+.typing-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #FFD600;
+  display: inline-block;
+}
+.typing-dot:nth-child(1) { animation: typing 1.4s infinite 0s; }
+.typing-dot:nth-child(2) { animation: typing 1.4s infinite 0.2s; }
+.typing-dot:nth-child(3) { animation: typing 1.4s infinite 0.4s; }
