@@ -13,6 +13,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="nl">
+      <head>
+        <script
+          type="module"
+          src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
+        />
+        <link rel="icon" href="/logo.webp" type="image/webp" />
+      </head>
       <body className="font-sans antialiased">{children}</body>
     </html>
   )
